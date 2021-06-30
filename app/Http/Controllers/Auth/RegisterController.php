@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -53,6 +54,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'nombre_completo'=>['required', 'string', 'max:255'],
+            'dni' =>['required', 'integer', 'min:7', 'max:8'],
         ]);
     }
 
@@ -62,12 +65,22 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(Request $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => $data['password'],
+            'nombre_completo' => $data['nombre_completo'],
+            'dni' => $data['dni'],
         ]);
+
+        auth()->login($user);
+        
+        return redirect()->to('/home'); 
+    }
+
+    public function create_view(){
+        return view('auth.register');
     }
 }

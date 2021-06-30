@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\PedidoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,13 +15,11 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-    
-});
-Route::get('/register', [RegisterController::class, 'create']);
-Route::post('register',[RegisterController::class, 'store']);
+Route::get('/home', [PedidoController::class, 'index'])->name('home');
+
+Route::get('/register', [RegisterController::class, 'create_view']);
+Route::post('/register',[RegisterController::class, 'create'])->name('register');
 
 Route::get('/login', [LoginController::class, 'create']);
-Route::post('/login', [LoginController::class, 'store']);
-Route::get('/logout', [LoginController::class, 'destroy']);
+Route::post('/login', [LoginController::class, 'store'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

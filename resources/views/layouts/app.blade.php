@@ -21,6 +21,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background: url("{{ URL::asset('image/carreteraRegistro.jpg') }}");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -54,6 +64,12 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                            @if (Route::has('formulario'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('formulario') }}">{{ __('UbicacionDestino') }}</a>
+                                </li>
+                            @endif
+
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
