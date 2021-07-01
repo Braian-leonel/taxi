@@ -19,7 +19,7 @@ class CreatePedidosTable extends Migration
             $table->integer('ubicacion_origen');
             $table->integer('ubicacion_destino');
             $table->integer('tipo_servicio');
-            $table->integer('user_chofer');
+            $table->integer('user_chofer')->nullable();
             $table->timestamps();
         });
     }

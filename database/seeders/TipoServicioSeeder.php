@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\models\TipoServicio;
+use App\Models\TipoServicio;
 
 
 class TipoServicioSeeder extends Seeder

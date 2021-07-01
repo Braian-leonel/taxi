@@ -16,6 +16,9 @@ use App\Http\Controllers\PedidoController;
 */
 
 Route::get('/home', [PedidoController::class, 'index'])->name('home');
+Route::post('/pedido', [PedidoController::class, 'store'])->name('realizar_pedido');
+Route::get('/pedido', [PedidoController::class, 'listar'])->name('listar_pedidos');
+
 
 Route::get('/register', [RegisterController::class, 'create_view']);
 Route::post('/register',[RegisterController::class, 'create'])->name('register');

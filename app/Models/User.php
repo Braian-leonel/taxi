@@ -6,6 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Ubicacion_Origen;
+use App\Models\Ubicacion_Destino;
+use App\Models\TipoServicio;
+use App\Models\User;
+use App\Models\Pedido;
 
 class User extends Authenticatable
 {
@@ -46,5 +51,10 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+    
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'user'); //trae todo los pedidos de un usuario
     }
 }

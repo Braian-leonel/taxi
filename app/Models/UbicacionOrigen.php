@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class UbicacionOrigen extends Model
 {
 
+
+    protected $fillable = [
+        'calle',
+        'barrio',
+        'numero_casa',
+        'altura_casa',
+    ];
+
     use HasFactory;
     /**
      * The table associated with the model.
